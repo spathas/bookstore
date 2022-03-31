@@ -12,7 +12,7 @@ import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = styled('div')(({ theme }) => ({
+const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.primary.light, 0.25),
@@ -48,7 +48,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Search() {
+function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
 
   //Context
@@ -95,7 +95,7 @@ function Search() {
         tempor incididunt ut labore et dolore magna aliqua.
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <SearchBar>
+        <Search>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -104,10 +104,10 @@ function Search() {
             inputProps={{ 'aria-label': 'search' }}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-        </SearchBar>
+        </Search>
       </Box>
     </section>
   );
 }
 
-export default Search;
+export default SearchBar;

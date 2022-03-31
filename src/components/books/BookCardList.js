@@ -4,13 +4,13 @@ import { useState, useContext, useCallback, useEffect } from 'react';
 import UIContext from '../../contexts/ui-context';
 
 //CUSTOM COMPONENTS
-import Book from './Book';
-import Filters from './Filters';
+import Book from './BookCard';
+import Filters from '../search/Filters';
 
 //MUI COMPONENTS
 import Grid from '@mui/material/Grid';
 
-function BooksList() {
+function BookCardList() {
   //Context
   const uiContext = useContext(UIContext);
 
@@ -60,7 +60,13 @@ function BooksList() {
   }, [books, sortedValue]);
 
   return (
-    <Grid container spacing={3} justifyContent='center' alignItems='center'>
+    <Grid
+      container
+      spacing={3}
+      justifyContent='center'
+      alignItems='center'
+      sx={{ mb: 3 }}
+    >
       <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
         <Filters getValue={getSortedValue} />
       </Grid>
@@ -69,4 +75,4 @@ function BooksList() {
   );
 }
 
-export default BooksList;
+export default BookCardList;

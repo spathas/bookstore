@@ -10,7 +10,7 @@ import Rating from '@mui/material/Rating';
 import { CardActionArea } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 
-function Book({ title, desc, rating }) {
+function BookCard({ title, desc, rating }) {
   // Redirect user to book details page
   // We will using slugify to make a mock id for every book.
   // We need IDs to redirect the user to book details page.
@@ -55,4 +55,4 @@ function Book({ title, desc, rating }) {
   );
 }
 
-export default Book;
+export default BookCard;
