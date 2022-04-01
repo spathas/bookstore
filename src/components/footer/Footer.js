@@ -13,12 +13,17 @@ function Footer() {
     <footer>
       <Box
         sx={{
-          height: '5vh',
+          minHeight: '5vh',
           backgroundColor: theme.palette.primary.main,
           p: 1,
         }}
       >
-        <Grid container justifyContent='center' alignItems='center'>
+        <Grid
+          container
+          justifyContent='center'
+          alignItems='center'
+          sx={{ pt: 2 }}
+        >
           <Grid item xl={2} lg={2} md={2} sm={2} xs={2}></Grid>
           <Grid item xl={8} lg={8} md={8} sm={8} xs={8}>
             <Typography
@@ -35,7 +40,7 @@ function Footer() {
               variant='body1'
               component='div'
               align='center'
-              color='secondary'
+              color='primary.contrastText'
             >
               Developed by: Christopher Spathas
             </Typography>

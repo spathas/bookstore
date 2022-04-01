@@ -12,8 +12,8 @@ import FormLabel from '@mui/material/FormLabel';
 import { useTheme } from '@mui/material/styles';
 
 function Filters({ getValue }) {
-  const [value, setValue] = useState('name');
-  const filters = ['name', 'popularity', 'year'];
+  const [value, setValue] = useState('title');
+  const filters = ['title', 'popularity', 'year'];
 
   //STYLES
   const theme = useTheme();

@@ -7,10 +7,16 @@
     ],
     "books": [
         {
-            "isbn": "9781593279509",
+            "isbn": [
+                "9781593279509",
+                "0553418025"
+            ],
             "title": "Eloquent JavaScript, Third Edition",
             "subtitle": "A Modern Introduction to Programming",
-            "author": "Marijn Haverbeke",
+            "author": [
+                "Marijn Haverbeke",
+                "Nicolás Bevacqua"
+            ],
             "published": "2018-12-04T00:00:00.000Z",
             "publisher": "No Starch Press",
             "pages": 472,
@@ -114,7 +120,7 @@
             "website": "https://git-scm.com/book/en/v2",
             "popularity": 17,
             "categories": [
-                "Programming",
+                "Best Practices",
                 "Version Control Systems"
             ]
         },

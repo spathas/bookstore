@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import slugify from 'slugify';
 
 //MUI COMPONENTS
@@ -11,16 +12,18 @@ import { CardActionArea } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 
 function BookCard({ title, desc, rating }) {
+  const navigate = useNavigate();
+
   // Redirect user to book details page
   // We will using slugify to make a mock id for every book.
   // We need IDs to redirect the user to book details page.
   const handleClick = (title) => {
     const id = slugify(title);
-    console.log(id);
+    navigate(`/books/${id}`);
   };
 
   return (
-    <Card sx={{ maxWidth: 300 }} onClick={() => handleClick(title)}>
+    <Card sx={{ width: '280px' }} onClick={() => handleClick(title)}>
       <CardActionArea>
         <CardMedia
           component='img'
@@ -43,11 +46,13 @@ function BookCard({ title, desc, rating }) {
               {title.charAt(0).toUpperCase() + title.slice(1)}
             </Box>
           </Typography>
-          <Tooltip title={desc} arrow>
-            <Typography variant='body2' color='text.secondary' noWrap>
-              {desc}
-            </Typography>
-          </Tooltip>
+          {desc && (
+            <Tooltip title={desc} arrow>
+              <Typography variant='body2' color='text.secondary' noWrap>
+                {desc}
+              </Typography>
+            </Tooltip>
+          )}
           <Rating title='rating' value={rating} precision={0.5} readOnly />
         </CardContent>
       </CardActionArea>

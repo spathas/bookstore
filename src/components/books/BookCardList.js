@@ -8,6 +8,7 @@ import Book from './BookCard';
 import Filters from '../search/Filters';
 
 //MUI COMPONENTS
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
 function BookCardList() {
@@ -15,12 +16,13 @@ function BookCardList() {
   const uiContext = useContext(UIContext);
 
   //State
-  const [sortedValue, setSortedValue] = useState('name');
-  const [books, setBooks] = useState(uiContext.rowData.books);
+  const [sortedValue, setSortedValue] = useState('title');
+  const [books, setBooks] = useState(null);
 
   useEffect(() => {
     setBooks(uiContext.books);
-  }, [uiContext.books]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getSortedValue = (value) => {
     setSortedValue(value);
@@ -28,7 +30,7 @@ function BookCardList() {
 
   // Filtering System
   const returnSortedBooks = useCallback(() => {
-    let sortedData = books;
+    let sortedData = uiContext.rowData.books;
 
     if (sortedValue === 'popularity') {
       sortedData.sort(function (a, b) {
@@ -46,7 +48,7 @@ function BookCardList() {
     }
 
     //By default sorted according to title.
-    if (sortedValue === 'name') {
+    if (sortedValue === 'title') {
       sortedData.sort(function (a, b) {
         return a.title.localeCompare(b.title);
       });
@@ -57,7 +59,7 @@ function BookCardList() {
         <Book title={book.title} desc={book.description} rating={2.4} />
       </Grid>
     ));
-  }, [books, sortedValue]);
+  }, [sortedValue, uiContext.rowData.books]);
 
   return (
     <Grid
@@ -65,12 +67,14 @@ function BookCardList() {
       spacing={3}
       justifyContent='center'
       alignItems='center'
-      sx={{ mb: 3 }}
+      sx={{ my: 2 }}
     >
       <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-        <Filters getValue={getSortedValue} />
+        <Container>
+          <Filters getValue={getSortedValue} />
+        </Container>
       </Grid>
-      {returnSortedBooks()}
+      {books && returnSortedBooks()}
     </Grid>
   );
 }

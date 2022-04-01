@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 //CUSTOM COMPONENTS
-import MenuBar from './MenuBar';
+import MenuBar from '../nav/MenuBar';
 import AuthUser from './AuthUser';
-import BreadcrumbsMenu from './BreadcrumbsMenu';
+import BreadcrumbsMenu from '../nav/BreadcrumbsMenu';
 
 //MUI COMPONENTS
 import Box from '@mui/material/Box';
@@ -21,7 +21,7 @@ export default function MenuAppBar() {
 
   return (
     <header>
-      <AppBar position='static'>
+      <AppBar position='sticky'>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <MenuBar
             triggerMenu={triggerMenu}
