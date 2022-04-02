@@ -28,8 +28,8 @@ function BookCard({ title, desc, rating }) {
         <CardMedia
           component='img'
           height='340'
-          image='/book-images/download.jfif'
-          alt='green iguana'
+          image={`/book-images/${slugify(title)}.webp`}
+          alt={slugify(title) + '--image'}
         />
         <CardContent>
           <Typography gutterBottom variant='h6' component='div'>

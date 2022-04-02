@@ -1,7 +1,7 @@
 import { useState, useContext, useCallback, useEffect } from 'react';
 
 //CONTEXT
-import UIContext from '../../contexts/ui-context';
+import DataContext from '../../contexts/data-context';
 
 //CUSTOM COMPONENTS
 import Book from './BookCard';
@@ -13,14 +13,14 @@ import Grid from '@mui/material/Grid';
 
 function BookCardList() {
   //Context
-  const uiContext = useContext(UIContext);
+  const dataContext = useContext(DataContext);
 
   //State
   const [sortedValue, setSortedValue] = useState('title');
   const [books, setBooks] = useState(null);
 
   useEffect(() => {
-    setBooks(uiContext.books);
+    setBooks(dataContext.books);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -30,7 +30,7 @@ function BookCardList() {
 
   // Filtering System
   const returnSortedBooks = useCallback(() => {
-    let sortedData = uiContext.rowData.books;
+    let sortedData = dataContext.rowData.books;
 
     if (sortedValue === 'popularity') {
       sortedData.sort(function (a, b) {
@@ -59,7 +59,7 @@ function BookCardList() {
         <Book title={book.title} desc={book.description} rating={2.4} />
       </Grid>
     ));
-  }, [sortedValue, uiContext.rowData.books]);
+  }, [sortedValue, dataContext.rowData.books]);
 
   return (
     <Grid

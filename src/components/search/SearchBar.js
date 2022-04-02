@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 
 //CONTEXT
-import UIContext from '../../contexts/ui-context';
+import DataContext from '../../contexts/data-context';
 
 //MUI COMPONENTS
 import Box from '@mui/material/Box';
@@ -52,13 +52,13 @@ function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
 
   //Context
-  const uiContext = useContext(UIContext);
-  const data = uiContext.rowData.books;
+  const dataContext = useContext(DataContext);
+  const data = dataContext.rowData.books;
 
   // Update data every time search query change.
   useEffect(() => {
     const searchData = getBooksBySearch(data, searchInput);
-    uiContext.updateBooks(searchData);
+    dataContext.updateBooks(searchData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, searchInput]);
 

@@ -3,20 +3,20 @@ import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { UIContextProvider } from '../src/contexts/ui-context';
+import { DataContextProvider } from '../src/contexts/data-context';
 
 //STYLES
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../src/theme';
 
 ReactDOMClient.createRoot(document.getElementById('root')).render(
-  <UIContextProvider>
+  <DataContextProvider>
     <ThemeProvider theme={theme}>
       <React.StrictMode>
         <App />
       </React.StrictMode>
     </ThemeProvider>
-  </UIContextProvider>
+  </DataContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

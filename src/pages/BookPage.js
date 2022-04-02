@@ -7,7 +7,7 @@ import BookPrevierw from '../components/books/BookPrevierw';
 import SuggestedBooks from '../components/books/SuggestedBooks';
 
 //CONTEXTS
-import UiContext from '../contexts/ui-context';
+import DataContext from '../contexts/data-context';
 
 //STYLES
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -21,8 +21,8 @@ function BookPage() {
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.up('md'));
 
-  const uiContext = useContext(UiContext);
-  const books = uiContext.books;
+  const dataContext = useContext(DataContext);
+  const books = dataContext.books;
 
   const book = books.find((book) => slugify(book.title) === bookId);
 
@@ -30,7 +30,7 @@ function BookPage() {
     <>
       <BookPrevierw book={book} />
       {matchesSM && (
-        <SuggestedBooks book={book} booksArr={uiContext.rowData.books} />
+        <SuggestedBooks book={book} booksArr={dataContext.rowData.books} />
       )}
     </>
   );

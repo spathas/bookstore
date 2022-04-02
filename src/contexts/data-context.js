@@ -2,13 +2,13 @@ import { useState, createContext } from 'react';
 
 const jsonData = require('../data/bookstore-data.json');
 
-const UIContext = createContext({
+const DataContext = createContext({
   rowData: null,
   books: null,
   updateBooks: () => {},
 });
 
-export const UIContextProvider = (props) => {
+export const DataContextProvider = (props) => {
   const rowData = jsonData;
   const [books, setBooks] = useState(jsonData.books);
 
@@ -23,10 +23,10 @@ export const UIContextProvider = (props) => {
   };
 
   return (
-    <UIContext.Provider value={contetxtValue}>
+    <DataContext.Provider value={contetxtValue}>
       {props.children}
-    </UIContext.Provider>
+    </DataContext.Provider>
   );
 };
 
-export default UIContext;
+export default DataContext;

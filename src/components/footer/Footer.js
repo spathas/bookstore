@@ -30,7 +30,7 @@ function Footer() {
               variant='h5'
               component='div'
               align='center'
-              color='secondary'
+              color='primary.contrastText'
             >
               BOOKSTORE FOOTER
             </Typography>
