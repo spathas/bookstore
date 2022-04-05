@@ -65,7 +65,7 @@ const AuthorInput = ({
         </InputLabel>
         <Input
           id={`author-input-${index + 1}`}
-          placeholder={`Enter the name of author...`}
+          placeholder={`Enter the author for this book...`}
           value={enteredValue}
           error={hasError}
           onChange={valueChangedHandler}

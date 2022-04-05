@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 
 //CONTEXT
 import DataContext from '../../contexts/data-context';
@@ -49,19 +49,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function SearchBar() {
-  const [searchInput, setSearchInput] = useState('');
-
   //Context
   const dataContext = useContext(DataContext);
   const data = dataContext.rowData.books;
 
-  // Update data every time search query change.
-  useEffect(() => {
-    const searchData = getBooksBySearch(data, searchInput);
-    dataContext.updateBooks(searchData);
-  }, [data, searchInput]);
-
-  // Search engine - Ignore all website field and all numeric values...
+  // Search engine - Ignore all website links and all numeric values... At this time we search by phrase.
+  // This is a basic searching, we can split the text to array. With this solution we can search by keywords
   // Return all books which contains the given search.
   const getBooksBySearch = (data, text) => {
     const tempArr = [];
@@ -81,7 +74,12 @@ function SearchBar() {
       }
     }
 
-    return tempArr;
+    return [...tempArr];
+  };
+
+  const handleChange = (e) => {
+    // The books are stored in data context and received at the BookList component
+    dataContext.updateBooks(getBooksBySearch(data, e.target.value));
   };
 
   return (
@@ -101,7 +99,7 @@ function SearchBar() {
           <StyledInputBase
             placeholder='Search for a new book...'
             inputProps={{ 'aria-label': 'search' }}
-            onChange={(e) => setSearchInput(e.target.value)}
+            onChange={handleChange}
           />
         </Search>
       </Box>

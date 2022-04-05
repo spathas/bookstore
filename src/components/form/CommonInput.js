@@ -17,6 +17,7 @@ const CommonInput = ({
   isRequired,
   validationFn,
   getValues,
+  hidden,
 }) => {
   //State
   const {
@@ -43,14 +44,14 @@ const CommonInput = ({
 
   //Render
   return (
-    <Grow in timeout={500}>
+    <Grow in={!hidden} timeout={500}>
       <FormControl fullWidth margin='dense'>
         <InputLabel htmlFor={`${name}-input`} required={isRequired}>
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </InputLabel>
         <Input
           id={`${name}-input`}
-          placeholder={`Enter the ${name} of this book...`}
+          placeholder={`Enter the ${name} for this book...`}
           onChange={valueChangedHandler}
           onBlur={touchedHandler}
           error={hasError}

@@ -5,6 +5,7 @@ import CommonInput from './CommonInput';
 import AuthorList from './AuthorList';
 import CategoriesSelector from './CategoriesSelector';
 import PublichedPicker from './PublichedPicker';
+import IsbnInput from './IsbnInput';
 
 //MUI COMPOENTS
 import { Button, Container } from '@mui/material';
@@ -38,7 +39,7 @@ export default function Form() {
   const [published, setPublished] = useState({});
   const [authors, setAuthors] = useState([]); // Array of objs
   const [categories, setCategories] = useState([]); // Array of objs
-  // const [isbn, setIsbn] = useState({});
+  const [isbns, setIsbns] = useState({});
 
   const isValid =
     title.isValid &&
@@ -49,15 +50,16 @@ export default function Form() {
     authors.isValid &&
     categories.isValid;
 
-  console.log('isValid', isValid);
+  // console.log('isValid', isValid);
 
-  console.log('title', title);
-  console.log('subtitle', subtitle);
-  console.log('description', description);
-  console.log('pages', pages);
-  console.log('published', published);
-  console.log('authors', authors);
-  console.log('categories', categories);
+  // console.log('title', title);
+  // console.log('subtitle', subtitle);
+  // console.log('description', description);
+  // console.log('pages', pages);
+  // console.log('published', published);
+  // console.log('authors', authors);
+  // console.log('categories', categories);
+  // console.log('isbns', isbns);
 
   //Submit form
   const submitHandler = (e) => {
@@ -100,6 +102,10 @@ export default function Form() {
         value: categories.value,
         isValid: categories.isValid,
       },
+      isbns: {
+        value: isbns.value,
+        isValid: isbns.isValid,
+      },
     };
     console.log(formObj);
 
@@ -111,6 +117,7 @@ export default function Form() {
     published.reset();
     authors.reset();
     categories.reset();
+    isbns.reset();
   };
 
   //////////////////////////////////
@@ -156,6 +163,7 @@ export default function Form() {
           getValues={useCallback((value) => setCategories(value), [])}
         />
         {/* ISBN */}
+        <IsbnInput getValues={useCallback((value) => setIsbns(value), [])} />
         <Button
           disabled={!isValid}
           type='submit'

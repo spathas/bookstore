@@ -9,30 +9,33 @@ import Grid from '@mui/material/Grid';
 function SuggestedBooks({ book, booksArr }) {
   const [suggestedBooks, setSuggestedBooks] = useState(null);
 
-  // Inititalze suggestedBooks
-
-  useEffect(() => setSuggestedBooks(returnSuggestedBooks()), []);
-
+  // Component Functions ///////////////////////////////////////
   // Get all books with same at least 1 category keyword
-  const getBooksBySearchCategories = (data, text) => {
-    const tempArr = [];
+  const getBooksBySearchCategories = useCallback(
+    (books, category) => {
+      const tempArr = [];
 
-    // Loop for the object categories
-    for (let value in data) {
-      // Extract the categories
-      const categories = data[value].categories;
+      // Delete selected book from array of books
+      books = books.filter((b) => b.title !== book.title);
 
-      const results = categories.filter((category) => {
-        return category.toLowerCase().includes(text.toLowerCase());
-      });
+      // Loop for the object categories
+      for (let value in books) {
+        // Extract the categories
+        const categories = books[value].categories;
 
-      if (results.length) {
-        tempArr.push(data[value]);
+        const results = categories.filter((category) => {
+          return category.toLowerCase().includes(category.toLowerCase());
+        });
+
+        if (results.length) {
+          tempArr.push(books[value]);
+        }
       }
-    }
 
-    return tempArr;
-  };
+      return tempArr;
+    },
+    [book]
+  );
 
   // When categories are over that 1 the result is an Array of Arrays.
   // We convate the arrays and delete duplicate objects (based on title).
@@ -70,8 +73,15 @@ function SuggestedBooks({ book, booksArr }) {
     tempArr = removeDuplicates(tempArr);
 
     return tempArr;
-  }, [book.categories, booksArr]);
+  }, [book, booksArr, getBooksBySearchCategories]);
 
+  // Update suggestedBooks
+  useEffect(
+    () => setSuggestedBooks(returnSuggestedBooks()),
+    [returnSuggestedBooks]
+  );
+
+  //Redner /////////////////////////////////////////////
   return (
     <Grid container sx={{ mb: 2 }}>
       {suggestedBooks && (
