@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Form from '../components/form/Form';
+
 function bookCreationPage() {
-  return <div>bookCreationPage</div>;
+  return <Form />;
 }
 
 export default bookCreationPage;

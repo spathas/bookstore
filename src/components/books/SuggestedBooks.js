@@ -10,7 +10,7 @@ function SuggestedBooks({ book, booksArr }) {
   const [suggestedBooks, setSuggestedBooks] = useState(null);
 
   // Inititalze suggestedBooks
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   useEffect(() => setSuggestedBooks(returnSuggestedBooks()), []);
 
   // Get all books with same at least 1 category keyword
@@ -22,8 +22,8 @@ function SuggestedBooks({ book, booksArr }) {
       // Extract the categories
       const categories = data[value].categories;
 
-      const results = categories.filter((value) => {
-        return value.toLowerCase().includes(text.toLowerCase());
+      const results = categories.filter((category) => {
+        return category.toLowerCase().includes(text.toLowerCase());
       });
 
       if (results.length) {

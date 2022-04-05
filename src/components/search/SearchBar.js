@@ -59,7 +59,6 @@ function SearchBar() {
   useEffect(() => {
     const searchData = getBooksBySearch(data, searchInput);
     dataContext.updateBooks(searchData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, searchInput]);
 
   // Search engine - Ignore all website field and all numeric values...

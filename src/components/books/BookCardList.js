@@ -1,4 +1,4 @@
-import { useState, useContext, useCallback, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 //CONTEXT
 import DataContext from '../../contexts/data-context';
@@ -21,16 +21,15 @@ function BookCardList() {
 
   useEffect(() => {
     setBooks(dataContext.books);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dataContext.books]);
 
   const getSortedValue = (value) => {
     setSortedValue(value);
   };
 
   // Filtering System
-  const returnSortedBooks = useCallback(() => {
-    let sortedData = dataContext.rowData.books;
+  const returnSortedBooks = () => {
+    let sortedData = dataContext.books;
 
     if (sortedValue === 'popularity') {
       sortedData.sort(function (a, b) {
@@ -59,7 +58,7 @@ function BookCardList() {
         <Book title={book.title} desc={book.description} rating={2.4} />
       </Grid>
     ));
-  }, [sortedValue, dataContext.rowData.books]);
+  };
 
   return (
     <Grid
