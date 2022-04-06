@@ -13,13 +13,21 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+
+//STYLES
 import MenuIcon from '@mui/icons-material/Menu';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 //Example links
 const links = [{ name: 'Home', href: '/' }];
 
 export default function MenuAppBar() {
   const [triggerMenu, setTriggerMenu] = useState(false);
+
+  //Styles
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
     <header>
@@ -45,7 +53,11 @@ export default function MenuAppBar() {
               textDecoration: 'none',
             }}
           >
-            <Typography variant='h4' component='div' align='center'>
+            <Typography
+              variant={matchesSM ? 'h4' : 'h6'}
+              component='div'
+              align='center'
+            >
               <Link href='#' component='span' color='inherit' underline='hover'>
                 BOOKSTORE
               </Link>

@@ -15,9 +15,8 @@ const useStyles = makeStyles((theme) => ({
   image: {
     borderRadius: '10px',
     height: 700,
-    [theme.breakpoints.down('xs')]: {
-      width: '100% !important', // Overrides inline-style
-      height: 100,
+    [theme.breakpoints.down('sm')]: {
+      height: 300,
     },
   },
 }));
