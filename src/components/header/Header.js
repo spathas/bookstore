@@ -46,7 +46,7 @@ export default function MenuAppBar() {
             }}
           >
             <Typography variant='h4' component='div' align='center'>
-              <Link href='#' color='inherit' underline='hover'>
+              <Link href='#' component='span' color='inherit' underline='hover'>
                 BOOKSTORE
               </Link>
             </Typography>

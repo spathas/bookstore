@@ -22,10 +22,11 @@ function Footer() {
           container
           justifyContent='center'
           alignItems='center'
+          spacing={2}
           sx={{ pt: 2 }}
         >
-          <Grid item xl={2} lg={2} md={2} sm={2} xs={2}></Grid>
-          <Grid item xl={8} lg={8} md={8} sm={8} xs={8}>
+          <Grid item xl={3} lg={3} md={3} sm={12} xs={12}></Grid>
+          <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
             <Typography
               variant='h5'
               component='div'
@@ -35,7 +36,7 @@ function Footer() {
               BOOKSTORE FOOTER
             </Typography>
           </Grid>
-          <Grid item xl={2} lg={2} md={2} sm={2} xs={2}>
+          <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
             <Typography
               variant='body1'
               component='div'

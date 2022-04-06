@@ -27,8 +27,8 @@ export default function BookRating() {
   return (
     <Box
       sx={{
-        px: 10,
         display: 'flex',
+        justifyContent: 'center',
         alignItems: 'center',
       }}
     >

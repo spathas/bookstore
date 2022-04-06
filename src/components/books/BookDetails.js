@@ -7,9 +7,12 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function BookDetails({ book }) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [open, setOpen] = useState(false);
 
   // ISBN Functionalities ///////////////////////
   const checkISBN = (value) => {
@@ -49,8 +52,21 @@ function BookDetails({ book }) {
       </Typography>
     );
   };
-  // ISBN Functionalities end /////////////////////////////
 
+  // Alert Functions ////////////////////////
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  // Render
   return (
     <Grid container direction='column' spacing={2}>
       {/* Title - subtitle - -description */}
@@ -112,9 +128,19 @@ function BookDetails({ book }) {
       {/* Buy button */}
       <Grid item align='center'>
         <Box sx={{ width: '30%', mt: 5 }}>
-          <Button variant='contained' fullWidth>
+          <Button variant='contained' fullWidth onClick={handleClick}>
             Buy
           </Button>
+          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+            <Alert
+              onClose={handleClose}
+              severity='success'
+              elevation={6}
+              variant='filled'
+            >
+              Thanks for your purchase!
+            </Alert>
+          </Snackbar>
         </Box>
       </Grid>
     </Grid>

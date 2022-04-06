@@ -6,9 +6,10 @@ import AuthorList from './AuthorList';
 import CategoriesSelector from './CategoriesSelector';
 import PublichedPicker from './PublichedPicker';
 import IsbnInput from './IsbnInput';
+import ImageInput from './ImageInput';
 
 //MUI COMPOENTS
-import { Button, Container } from '@mui/material';
+import { Button, Container, Grow } from '@mui/material';
 
 //VALIDATION FUNCTIONS
 // Restrict all special chars except for [!@"#&*]
@@ -41,18 +42,18 @@ export default function Form() {
   const [categories, setCategories] = useState([]); // Array of objs
   const [isbns, setIsbns] = useState({});
 
-  const isValid = true;
-  // title.isValid &&
-  // subtitle.isValid &&
-  // description.isValid &&
-  // pages.isValid &&
-  // published.isValid &&
-  // authors.isValid &&
-  // categories.isValid &&
-  // isbns.isValid;
+  const isValid =
+    title.isValid &&
+    subtitle.isValid &&
+    description.isValid &&
+    pages.isValid &&
+    published.isValid &&
+    authors.isValid &&
+    categories.isValid &&
+    isbns.isValid;
 
+  // Print all data
   // console.log('isValid', isValid);
-
   // console.log('title', title);
   // console.log('subtitle', subtitle);
   // console.log('description', description);
@@ -165,16 +166,21 @@ export default function Form() {
         />
         {/* ISBN */}
         <IsbnInput getValues={useCallback((value) => setIsbns(value), [])} />
-        <Button
-          disabled={!isValid}
-          type='submit'
-          variant='contained'
-          size='large'
-          color='primary'
-          sx={{ my: 2 }}
-        >
-          Submit
-        </Button>
+        {/* PHOTO */}
+        <ImageInput />
+        {/* SUBMIT BTN */}
+        <Grow in timeout={2000}>
+          <Button
+            disabled={!isValid}
+            type='submit'
+            variant='contained'
+            size='large'
+            color='primary'
+            sx={{ mb: 2, mt: 1 }}
+          >
+            Submit
+          </Button>
+        </Grow>
       </form>
     </Container>
   );

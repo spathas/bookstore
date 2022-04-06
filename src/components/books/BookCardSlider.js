@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import BookCard from './BookCard';
 
 //MUI COMPONENTS
-import { Box, Grid, Slide } from '@mui/material';
+import { Box, Grid, Grow } from '@mui/material';
 
 //STYLES
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -21,7 +21,6 @@ const useStyles = makeStyles({
 
 export default function BookCardSlider({ books, results }) {
   const [pointer, setPointer] = useState(0);
-  const [slideDirection, setSlideDirection] = useState('left');
   const [booksOnSlider, setBooksOnSlider] = useState(0);
 
   //Styles
@@ -52,28 +51,19 @@ export default function BookCardSlider({ books, results }) {
     }
 
     return selectedBooks.map((book) => (
-      <Slide
-        key={book.title}
-        direction={slideDirection}
-        timeout={500}
-        in
-        mountOnEnter
-        unmountOnExit
-      >
+      <Grow key={book.title} timeout={500} in mountOnEnter unmountOnExit>
         <Grid item>
           <BookCard title={book.title} rating={4} />
         </Grid>
-      </Slide>
+      </Grow>
     ));
   };
 
   const moveToLeft = () => {
-    setSlideDirection('right');
     setPointer(pointer - 1);
   };
 
   const moveToRight = () => {
-    setSlideDirection('left');
     setPointer(pointer + 1);
   };
 
