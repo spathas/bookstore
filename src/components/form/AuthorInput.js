@@ -60,7 +60,12 @@ const AuthorInput = ({
   return (
     <Grow in timeout={500}>
       <FormControl fullWidth margin='dense'>
-        <InputLabel htmlFor={`author-input-${index + 1}`} required>
+        <InputLabel
+          htmlFor={`author-input-${index + 1}`}
+          required
+          focused
+          error={hasError}
+        >
           Author
         </InputLabel>
         <Input

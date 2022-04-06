@@ -10,6 +10,7 @@ import Filters from '../search/Filters';
 //MUI COMPONENTS
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Grow from '@mui/material/Grow';
 
 function BookCardList() {
   //Context
@@ -54,9 +55,11 @@ function BookCardList() {
     }
 
     return sortedData.map((book) => (
-      <Grid item key={`bl-isbn-${book.isbn}`}>
-        <Book title={book.title} desc={book.description} rating={2.4} />
-      </Grid>
+      <Grow in timeout={500} key={`bl-isbn-${book.isbn}`}>
+        <Grid item>
+          <Book title={book.title} desc={book.description} rating={2.4} />
+        </Grid>
+      </Grow>
     ));
   };
 
@@ -68,11 +71,13 @@ function BookCardList() {
       alignItems='center'
       sx={{ my: 2 }}
     >
-      <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-        <Container>
-          <Filters getValue={getSortedValue} />
-        </Container>
-      </Grid>
+      <Grow in timeout={500}>
+        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+          <Container>
+            <Filters getValue={getSortedValue} />
+          </Container>
+        </Grid>
+      </Grow>
       {books && returnSortedBooks()}
     </Grid>
   );

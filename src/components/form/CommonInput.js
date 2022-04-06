@@ -46,7 +46,12 @@ const CommonInput = ({
   return (
     <Grow in={!hidden} timeout={500}>
       <FormControl fullWidth margin='dense'>
-        <InputLabel htmlFor={`${name}-input`} required={isRequired}>
+        <InputLabel
+          htmlFor={`${name}-input`}
+          required={isRequired}
+          error={hasError}
+          focused
+        >
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </InputLabel>
         <Input

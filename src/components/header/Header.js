@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link as LinkRouter } from 'react-router-dom';
+import Link from '@mui/material/Link';
 
 //CUSTOM COMPONENTS
 import MenuBar from '../nav/MenuBar';
@@ -36,9 +38,19 @@ export default function MenuAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h4' component='div' align='center'>
-            BOOKSTORE
-          </Typography>
+          <LinkRouter
+            to='/'
+            style={{
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            <Typography variant='h4' component='div' align='center'>
+              <Link href='#' color='inherit' underline='hover'>
+                BOOKSTORE
+              </Link>
+            </Typography>
+          </LinkRouter>
           <AuthUser />
         </Toolbar>
       </AppBar>

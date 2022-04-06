@@ -41,14 +41,15 @@ export default function Form() {
   const [categories, setCategories] = useState([]); // Array of objs
   const [isbns, setIsbns] = useState({});
 
-  const isValid =
-    title.isValid &&
-    subtitle.isValid &&
-    description.isValid &&
-    pages.isValid &&
-    published.isValid &&
-    authors.isValid &&
-    categories.isValid;
+  const isValid = true;
+  // title.isValid &&
+  // subtitle.isValid &&
+  // description.isValid &&
+  // pages.isValid &&
+  // published.isValid &&
+  // authors.isValid &&
+  // categories.isValid &&
+  // isbns.isValid;
 
   // console.log('isValid', isValid);
 
