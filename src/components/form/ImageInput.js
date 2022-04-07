@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
@@ -18,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ImageInput() {
-  const [image, setImage] = useState('');
+function ImageInput({ getValues }) {
+  const [image, setImage] = useState();
 
   //Styles
   const classes = useStyles();
@@ -28,6 +28,22 @@ function ImageInput() {
     setImage(e.target.files[0]);
     console.log(e.target.files[0]);
   };
+
+  // Parse Values /////////////////////
+  const returnValues = useCallback(() => {
+    if (!!image) {
+      console.log(image);
+      return getValues({
+        value: image,
+        isValid: image.type === 'image/webp',
+        reset: () => setImage(),
+      });
+    }
+  }, [getValues, image]);
+
+  useEffect(() => {
+    returnValues();
+  }, [returnValues]);
 
   return (
     <Box
@@ -56,11 +72,11 @@ function ImageInput() {
             variant='extended'
             sx={{ m: 2 }}
           >
-            <AddIcon /> {`${image ? 'Change' : 'Upload'} photo`}
+            <AddIcon /> {`${!!image ? 'Change' : 'Upload'} photo`}
           </Fab>
         </Grow>
       </label>
-      {image && (
+      {!!image && (
         <img
           src={URL.createObjectURL(image)}
           alt={image.name}

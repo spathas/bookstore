@@ -41,6 +41,7 @@ export default function Form() {
   const [authors, setAuthors] = useState([]); // Array of objs
   const [categories, setCategories] = useState([]); // Array of objs
   const [isbns, setIsbns] = useState({});
+  const [image, setImage] = useState({});
 
   const isValid =
     title.isValid &&
@@ -50,7 +51,8 @@ export default function Form() {
     published.isValid &&
     authors.isValid &&
     categories.isValid &&
-    isbns.isValid;
+    isbns.isValid &&
+    image.isValid;
 
   // Print all data
   // console.log('isValid', isValid);
@@ -62,6 +64,7 @@ export default function Form() {
   // console.log('authors', authors);
   // console.log('categories', categories);
   // console.log('isbns', isbns);
+  console.log('image', image);
 
   //Submit form
   const submitHandler = (e) => {
@@ -108,6 +111,10 @@ export default function Form() {
         value: isbns.value,
         isValid: isbns.isValid,
       },
+      image: {
+        value: isbns.value,
+        isValid: isbns.isValid,
+      },
     };
     console.log(formObj);
 
@@ -120,6 +127,7 @@ export default function Form() {
     authors.reset();
     categories.reset();
     isbns.reset();
+    image.reset();
   };
 
   //////////////////////////////////
@@ -167,7 +175,7 @@ export default function Form() {
         {/* ISBN */}
         <IsbnInput getValues={useCallback((value) => setIsbns(value), [])} />
         {/* PHOTO */}
-        <ImageInput />
+        <ImageInput getValues={useCallback((value) => setImage(value), [])} />
         {/* SUBMIT BTN */}
         <Grow in timeout={2000}>
           <Button
