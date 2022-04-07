@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { removeDuplicates } from '../../lib/data-manipulation';
 
 //CUSTOM COMPONENTS
 import BookCardSlider from './BookCardSlider';
@@ -10,8 +11,8 @@ function SuggestedBooks({ book, booksArr }) {
   const [suggestedBooks, setSuggestedBooks] = useState(null);
 
   // Component Functions ///////////////////////////////////////
-  // Get all books with same at least 1 category keyword
-  const getBooksBySearchCategories = useCallback(
+  // Return all books, those having at least 1 same category.
+  const getBooksSameCategories = useCallback(
     (books, category) => {
       const tempArr = [];
 
@@ -23,8 +24,8 @@ function SuggestedBooks({ book, booksArr }) {
         // Extract the categories
         const categories = books[value].categories;
 
-        const results = categories.filter((category) => {
-          return category.toLowerCase().includes(category.toLowerCase());
+        const results = categories.filter((value) => {
+          return value.toLowerCase() === category.toLowerCase();
         });
 
         if (results.length) {
@@ -37,43 +38,20 @@ function SuggestedBooks({ book, booksArr }) {
     [book]
   );
 
-  // When categories are over that 1 the result is an Array of Arrays.
-  // We convate the arrays and delete duplicate objects (based on title).
-  const removeDuplicates = (booksArr) => {
-    const books = [].concat.apply([], booksArr);
-    const newArray = [];
-    const uniqueObject = {};
-
-    // Loop for the array elements
-    for (const i in books) {
-      // Extract the title
-      const objTitle = books[i]['title'];
-
-      // Use the title as the index
-      uniqueObject[objTitle] = books[i];
-    }
-
-    // Loop to push unique object into array
-    for (const i in uniqueObject) {
-      newArray.push(uniqueObject[i]);
-    }
-
-    return newArray;
-  };
-
-  // Filtering System
+  // Filtering logic
   const returnSuggestedBooks = useCallback(() => {
     const bookCategories = book.categories;
 
     let tempArr = [];
     bookCategories.forEach((category) => {
-      tempArr.push(getBooksBySearchCategories(booksArr, category));
+      tempArr.push(getBooksSameCategories(booksArr, category));
     });
 
-    tempArr = removeDuplicates(tempArr);
-
-    return tempArr;
-  }, [book, booksArr, getBooksBySearchCategories]);
+    // If categories are over that 1 the result is an Array of Arrays,
+    // we have to convert the arrays to a single array structure and then
+    // delete duplicate objects (based on the title).
+    return removeDuplicates(tempArr);
+  }, [book, booksArr, getBooksSameCategories]);
 
   // Update suggestedBooks
   useEffect(

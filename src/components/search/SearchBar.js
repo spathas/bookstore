@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { removeDuplicates } from '../../lib/data-manipulation';
 
 //CONTEXT
 import DataContext from '../../contexts/data-context';
@@ -56,29 +57,39 @@ function SearchBar() {
   // Search engine - Ignore all website links and all numeric values... At this time we search by phrase.
   // This is a basic searching, we can split the text to array. With this solution we can search by keywords
   // Return all books which contains the given search.
-  const getBooksBySearch = (data, text) => {
+  const getBooksBySearch = (data, inputValue) => {
+    //Search simple logic
     const tempArr = [];
-    for (let value in data) {
-      let values = Object.entries(data[value]);
 
-      values = values.filter(
-        ([key, value]) => key !== 'website' && typeof value === 'string'
-      );
+    // Split input to keywords
+    inputValue
+      // We need a trim to delete spaces, otherwise, if the user enters an extra space the engine will return all over the books.
+      .trim()
+      // Split phrase into keywords
+      .split(' ')
+      .forEach((keyword) => {
+        for (let value in data) {
+          let values = Object.entries(data[value]);
 
-      const results = values.filter((value) => {
-        return value[1].toLowerCase().includes(text.toLowerCase());
+          values = values.filter(
+            ([key, value]) => key !== 'website' && typeof value === 'string'
+          );
+
+          const results = values.filter((value) => {
+            return value[1].toLowerCase().includes(keyword.toLowerCase());
+          });
+
+          if (results.length) {
+            tempArr.push(data[value]);
+          }
+        }
       });
-
-      if (results.length) {
-        tempArr.push(data[value]);
-      }
-    }
-
-    return [...tempArr];
+    // console.log(tempArr);
+    return removeDuplicates([...tempArr]);
   };
 
   const handleChange = (e) => {
-    // The books are stored in data context and received at the BookList component
+    // The books are stored in data context and received in BookList component
     dataContext.updateBooks(getBooksBySearch(data, e.target.value));
   };
 
