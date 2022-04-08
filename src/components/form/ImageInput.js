@@ -37,6 +37,12 @@ function ImageInput({ getValues }) {
         reset: () => setImage(),
       });
     }
+
+    return getValues({
+      value: null,
+      isValid: true,
+      reset: () => setImage(),
+    });
   }, [getValues, image]);
 
   useEffect(() => {

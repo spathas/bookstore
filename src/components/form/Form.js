@@ -52,10 +52,10 @@ export default function Form() {
     authors.isValid &&
     categories.isValid &&
     isbns.isValid &&
-    image.isValid;
+    (image.isValid || Object.keys(image).length === 0); // true if image is not set
 
   // Print all data
-  // console.log('isValid', isValid);
+  console.log('isValid', isValid);
   // console.log('title', title);
   // console.log('subtitle', subtitle);
   // console.log('description', description);
@@ -64,7 +64,7 @@ export default function Form() {
   // console.log('authors', authors);
   // console.log('categories', categories);
   // console.log('isbns', isbns);
-  // console.log('image', image);
+  console.log('image', image);
 
   //Submit form
   const submitHandler = (e) => {
@@ -112,8 +112,8 @@ export default function Form() {
         isValid: isbns.isValid,
       },
       image: {
-        value: isbns.value,
-        isValid: isbns.isValid,
+        value: image.value,
+        isValid: image.isValid,
       },
     };
     console.log(formObj);
