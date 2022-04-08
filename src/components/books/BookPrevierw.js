@@ -45,7 +45,6 @@ function BookPrevierw({ book }) {
           src={`/book-images/${slugify(book.title)}.webp`}
           srcSet={`/book-images/${slugify(book.title)}.webp`}
           alt={book.title}
-          width='100%'
           height={matchesSM ? '700' : '300'}
           loading='lazy'
           className={classes.image}
