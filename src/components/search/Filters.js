@@ -26,7 +26,6 @@ function Filters({ getValue }) {
   return (
     <FormControl
       sx={{
-        ml: 3,
         p: 2,
         backgroundColor: theme.palette.primary.main,
         borderRadius: '10px',

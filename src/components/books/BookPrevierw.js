@@ -9,6 +9,8 @@ import BookRating from './BookRating';
 import Grid from '@mui/material/Grid';
 
 //STYLES
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 function BookPrevierw({ book }) {
   //Styles
   const classes = useStyles();
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Grid
@@ -41,6 +45,8 @@ function BookPrevierw({ book }) {
           src={`/book-images/${slugify(book.title)}.webp`}
           srcSet={`/book-images/${slugify(book.title)}.webp`}
           alt={book.title}
+          width='100%'
+          height={matchesSM ? '700' : '300'}
           loading='lazy'
           className={classes.image}
         />

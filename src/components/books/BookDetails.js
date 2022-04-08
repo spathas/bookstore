@@ -53,17 +53,21 @@ function BookDetails({ book }) {
     );
   };
 
-  // Alert Functions ////////////////////////
-  const handleClick = () => {
+  // Component Functions ////////////////////////
+  const handleClickBuy = () => {
     setOpen(true);
   };
 
-  const handleClose = (event, reason) => {
+  const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
 
     setOpen(false);
+  };
+
+  const handleClickFavorite = () => {
+    setIsFavorite((prev) => !prev);
   };
 
   // Render
@@ -89,7 +93,7 @@ function BookDetails({ book }) {
           <Button
             variant='contained'
             color={isFavorite ? 'warning' : 'primary'}
-            onClick={() => setIsFavorite((prev) => !prev)}
+            onClick={handleClickFavorite}
           >
             Favorite
           </Button>
@@ -128,12 +132,16 @@ function BookDetails({ book }) {
       {/* Buy button */}
       <Grid item align='center'>
         <Box sx={{ width: '30%', mt: 5 }}>
-          <Button variant='contained' fullWidth onClick={handleClick}>
+          <Button variant='contained' fullWidth onClick={handleClickBuy}>
             Buy
           </Button>
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          <Snackbar
+            open={open}
+            autoHideDuration={3000}
+            onClose={handleCloseAlert}
+          >
             <Alert
-              onClose={handleClose}
+              onClose={handleCloseAlert}
               severity='success'
               elevation={6}
               variant='filled'

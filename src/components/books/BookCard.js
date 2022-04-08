@@ -27,6 +27,7 @@ function BookCard({ title, desc, rating }) {
       <CardActionArea>
         <CardMedia
           component='img'
+          width='280px'
           height='340'
           image={`/book-images/${slugify(title)}.webp`}
           alt={slugify(title) + '--image'}

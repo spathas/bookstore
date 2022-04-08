@@ -64,7 +64,7 @@ export default function Form() {
   // console.log('authors', authors);
   // console.log('categories', categories);
   // console.log('isbns', isbns);
-  console.log('image', image);
+  // console.log('image', image);
 
   //Submit form
   const submitHandler = (e) => {
@@ -150,6 +150,8 @@ export default function Form() {
         <CommonInput
           name='description'
           isRequired
+          isMultiline
+          firstUpper
           validationFn={descValidations}
           getValues={useCallback((value) => setDescription(value), [])}
         />

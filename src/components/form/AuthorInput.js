@@ -79,7 +79,7 @@ const AuthorInput = ({
             <InputAdornment position='end'>
               {index === 0 && extraAuthors + 1 < MAX_NUMBER_OF_AUTHORS && (
                 <IconButton aria-label='add author' onClick={addAuthor}>
-                  <AddCircleRoundedIcon />
+                  <AddCircleRoundedIcon color='primary' />
                 </IconButton>
               )}
               {index + 1 > extraAuthors && index !== 0 && (
@@ -87,7 +87,7 @@ const AuthorInput = ({
                   aria-label='delete author'
                   onClick={(e) => deleteAuthor(e, index)}
                 >
-                  <RemoveCircleRoundedIcon />
+                  <RemoveCircleRoundedIcon color='primary' />
                 </IconButton>
               )}
             </InputAdornment>

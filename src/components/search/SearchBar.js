@@ -10,8 +10,10 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 
 //STYLES
-import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import { styled, alpha } from '@mui/material/styles';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -54,6 +56,10 @@ function SearchBar() {
   const dataContext = useContext(DataContext);
   const data = dataContext.rowData.books;
 
+  //Styles
+  const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.up('sm'));
+
   // Search engine - Ignore all website links and all numeric values... At this time we search by phrase.
   // This is a basic searching, we can split the text to array. With this solution we can search by keywords
   // Return all books which contains the given search.
@@ -95,10 +101,10 @@ function SearchBar() {
 
   return (
     <section id='search'>
-      <Typography variant='h4' align='center'>
+      <Typography variant={matchesSM ? 'h4' : 'h5'} align='center'>
         Search to find your new book
       </Typography>
-      <Typography variant='body1' align='center'>
+      <Typography variant={matchesSM ? 'body1' : 'body2'} align='center'>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </Typography>

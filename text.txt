@@ -1,0 +1,53 @@
+// Validation checks
+title: {
+    pass: This a book title.
+    error-min-length: 9 length.
+    error-max-length: 121 characters length 121 characters length 121 characters length 121 characters length 121 characters length 121 charact
+}
+
+subtitle: {
+    pass: This a book subtitle. // No validation
+}
+
+description: {
+    pass: This a book description
+    error-max-length: 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 characters length 513 cha
+}
+
+pages: {
+    pass: 9999
+    error-min-value: 19
+    error-max-value: 10000
+}
+
+publisher: {
+    pass: Book publisher
+    error-min-length: 5 len
+    error-max-length: 61 characters length 61 characters length 61 characters lengt
+}
+
+author: {
+    pass: [
+        author 1,
+        author 2,
+        author 3
+    ]
+}
+
+isbn: [
+    {
+        isbn-13-pass: 9780140266900 / 978-0-14026-690-0
+        isbn-13-fail: 9780140266901 / 978-0-14026-690-1
+        isbn-10-pass: 0140266909 / 0-14026-690-9
+        isbn-10-fail: 0140266908 / 0-14026-690-8
+    },
+    {
+        
+        new-isbn-13-pass: 9791234567896
+        new-isbn-13-fail: 9791234567895
+    }
+]
+
+categories: {
+    pass: [max 4 categories - min 1 category]
+}

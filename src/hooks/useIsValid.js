@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 // If there is no validation callback return true.
-const useIsValid = (validationFn = () => true) => {
+const useIsValid = (validationFn = () => true, firstUpper) => {
   const [enteredValue, setEnteredValue] = useState('');
   const [isTouched, setIsTouched] = useState(false);
 
@@ -13,7 +13,11 @@ const useIsValid = (validationFn = () => true) => {
   const hasError = !isValid && isTouched;
 
   const valueChangedHandler = (e) => {
-    setEnteredValue(e.target.value);
+    setEnteredValue(
+      firstUpper
+        ? e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
+        : e.target.value
+    );
   };
 
   const touchedHandler = () => {

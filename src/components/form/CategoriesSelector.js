@@ -82,7 +82,11 @@ const CategoriesSelector = ({ getValues }) => {
               }}
             >
               {selected.map((value) => (
-                <Chip key={value} label={value} />
+                <Chip
+                  key={value}
+                  label={value}
+                  color={selectedCategories.length > 4 ? 'error' : 'primary'}
+                />
               ))}
             </Box>
           )}

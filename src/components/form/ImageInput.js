@@ -26,13 +26,11 @@ function ImageInput({ getValues }) {
 
   const changeHandler = (e) => {
     setImage(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
 
   // Parse Values /////////////////////
   const returnValues = useCallback(() => {
     if (!!image) {
-      console.log(image);
       return getValues({
         value: image,
         isValid: image.type === 'image/webp',
@@ -70,7 +68,7 @@ function ImageInput({ getValues }) {
             component='span'
             aria-label='add'
             variant='extended'
-            sx={{ m: 2 }}
+            sx={{ my: 2, mr: 2 }}
           >
             <AddIcon /> {`${!!image ? 'Change' : 'Upload'} photo`}
           </Fab>

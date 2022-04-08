@@ -15,6 +15,8 @@ const CommonInput = ({
   name,
   type = 'string',
   isRequired,
+  isMultiline,
+  firstUpper,
   validationFn,
   getValues,
   hidden,
@@ -27,7 +29,7 @@ const CommonInput = ({
     valueChangedHandler,
     touchedHandler,
     reset,
-  } = useIsValid(validationFn);
+  } = useIsValid(validationFn, firstUpper);
 
   // Parse Values /////////////////////
   const returnValues = useCallback(() => {
@@ -56,6 +58,7 @@ const CommonInput = ({
         </InputLabel>
         <Input
           id={`${name}-input`}
+          multiline={isMultiline}
           placeholder={`Enter the ${name} for this book...`}
           onChange={valueChangedHandler}
           onBlur={touchedHandler}

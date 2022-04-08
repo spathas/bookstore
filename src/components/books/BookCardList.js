@@ -12,6 +12,10 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Grow from '@mui/material/Grow';
 
+//STYLES
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+
 function BookCardList() {
   //Context
   const dataContext = useContext(DataContext);
@@ -19,6 +23,10 @@ function BookCardList() {
   //State
   const [sortedValue, setSortedValue] = useState('title');
   const [books, setBooks] = useState(null);
+
+  //Styles
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
     setBooks(dataContext.books);
@@ -73,7 +81,7 @@ function BookCardList() {
     >
       <Grow in timeout={500}>
         <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-          <Container>
+          <Container align={matchesMD ? 'center' : 'false'}>
             <Filters getValue={getSortedValue} />
           </Container>
         </Grid>
