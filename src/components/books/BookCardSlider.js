@@ -86,7 +86,7 @@ export default function BookCardSlider({ books, results }) {
         >
           {pointer > 0 && (
             <ArrowBackIosNewIcon
-              color='secondary'
+              color='primary'
               onClick={moveToLeft}
               fontSize='large'
             />
@@ -119,7 +119,7 @@ export default function BookCardSlider({ books, results }) {
             <ArrowForwardIosIcon
               onClick={moveToRight}
               fontSize='large'
-              color='secondary'
+              color='primary'
             />
           )}
         </Grid>
