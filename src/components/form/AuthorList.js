@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 // To add more Author inputs just change this value
 const MAX_NUMBER_OF_AUTHORS = 3;
 
-const AuthorList = ({ getValues }) => {
+const AuthorList = ({ validateAuthor, getValues }) => {
   const [enteredAuthors, setEnteredAuthors] = useState([]);
   const [extraAuthors, setExtraAuthors] = useState(0);
 
@@ -86,6 +86,7 @@ const AuthorList = ({ getValues }) => {
           addAuthor={addAuthor}
           deleteAuthor={deleteAuthor}
           getValues={getAuthors}
+          validationFn={validateAuthor}
         />
       );
 

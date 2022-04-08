@@ -11,9 +11,9 @@ import ImageInput from './ImageInput';
 //MUI COMPOENTS
 import { Button, Container, Grow } from '@mui/material';
 
-//VALIDATION FUNCTIONS
-// Restrict all special chars except for [!@"#&*]
+//VALIDATION FUNCTIONS ////////////////////////////////////
 const titleValidations = (value) => {
+  // Restrict all special chars except for [!@"#&*]
   const regex = /[`$%^()_+\-=[\]{};':\\|,.<>/?~]/;
   return (
     !regex.test(value.trim()) &&
@@ -30,6 +30,11 @@ const publisherValidations = (value) =>
 
 // We set extra validation over 20 pages
 const pagesValidations = (value) => value >= 20 && value <= 9999;
+
+// If input is empty
+const authorValidation = (value) => value.length !== 0;
+
+//VALIDATION FUNCTIONS END ////////////////////////////////
 
 //////////////////////////////////////////////////////////
 export default function Form() {
@@ -55,7 +60,7 @@ export default function Form() {
     (image.isValid || Object.keys(image).length === 0); // true if image is not set
 
   // Print all data
-  console.log('isValid', isValid);
+  // console.log('isValid', isValid
   // console.log('title', title);
   // console.log('subtitle', subtitle);
   // console.log('description', description);
@@ -64,7 +69,7 @@ export default function Form() {
   // console.log('authors', authors);
   // console.log('categories', categories);
   // console.log('isbns', isbns);
-  console.log('image', image);
+  // console.log('image', image);
 
   //Submit form
   const submitHandler = (e) => {
@@ -169,7 +174,10 @@ export default function Form() {
           getValues={useCallback((value) => setPublished(value), [])}
         />
         {/* AUTHORS */}
-        <AuthorList getValues={useCallback((value) => setAuthors(value), [])} />
+        <AuthorList
+          validateAuthor={authorValidation}
+          getValues={useCallback((value) => setAuthors(value), [])}
+        />
         {/* CATEGORIES */}
         <CategoriesSelector
           getValues={useCallback((value) => setCategories(value), [])}

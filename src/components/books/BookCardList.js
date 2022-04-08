@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from 'react';
 import DataContext from '../../contexts/data-context';
 
 //CUSTOM COMPONENTS
-import Book from './BookCard';
+import BookCard from './BookCard';
 import Filters from '../search/Filters';
 
 //MUI COMPONENTS
@@ -65,7 +65,7 @@ function BookCardList() {
     return sortedData.map((book) => (
       <Grow in timeout={500} key={`bl-isbn-${book.isbn}`}>
         <Grid item>
-          <Book title={book.title} desc={book.description} rating={2.4} />
+          <BookCard title={book.title} desc={book.description} rating={2.4} />
         </Grid>
       </Grow>
     ));

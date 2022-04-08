@@ -60,7 +60,7 @@ function SearchBar() {
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.up('sm'));
 
-  // Search engine - Ignore all website links and all numeric values... At this time we search by phrase.
+  // Search engine - Ignore all website links. At this time we search by keywords.
   // This is a basic searching, we can split the text to array. With this solution we can search by keywords
   // Return all books which contains the given search.
   const getBooksBySearch = (data, inputValue) => {

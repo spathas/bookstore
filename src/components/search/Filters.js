@@ -18,6 +18,8 @@ function Filters({ getValue }) {
   //STYLES
   const theme = useTheme();
 
+  // YOU CAN FIND FILTERING LOGIC IN BOOK LIST COMPONENT "../books/BookCardList.js"
+
   const handleChange = (event) => {
     setValue(event.target.value);
     getValue(event.target.value);

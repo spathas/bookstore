@@ -19,16 +19,13 @@ import RemoveCircleRoundedIcon from '@mui/icons-material/RemoveCircleRounded';
 // To add more Author inputs just change this value
 const MAX_NUMBER_OF_AUTHORS = 3;
 
-//VALIDATION FUNCTION
-// If input is empty
-const validateAuthor = (value) => value.length !== 0;
-
 const AuthorInput = ({
   extraAuthors,
   index,
   addAuthor,
   deleteAuthor,
   getValues,
+  validationFn,
 }) => {
   //State
   const {
@@ -38,7 +35,7 @@ const AuthorInput = ({
     valueChangedHandler,
     touchedHandler,
     reset,
-  } = useIsValid(validateAuthor);
+  } = useIsValid(validationFn);
 
   // Parse Values /////////////////////
   const returnValues = useCallback(() => {
@@ -51,6 +48,8 @@ const AuthorInput = ({
       index
     );
   }, [enteredValue, getValues, index, isValid, reset]);
+
+  console.log('render');
 
   useEffect(() => {
     returnValues();
