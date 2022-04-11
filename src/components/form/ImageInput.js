@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, memo } from 'react';
+import { useState, useEffect, useCallback, memo, Profiler } from 'react';
 
 //MUI COMPONENTS
 import Box from '@mui/material/Box';
@@ -51,6 +51,24 @@ function ImageInput({ getValues }) {
   }, [returnValues]);
 
   return (
+    // <Profiler id='image-input' onRender={(
+    //   id,
+    //   phase,
+    //   actualDuration,
+    //   baseDuration,
+    //   startTime,
+    //   commitTime,
+    //   interactions
+    // ) =>
+    //   console.log({
+    //     id,
+    //     phase,
+    //     actualDuration,
+    //     baseDuration,
+    //     startTime,
+    //     commitTime,
+    //     interactions,
+    //   });}>
     <Box
       sx={{
         display: 'flex',
@@ -90,6 +108,7 @@ function ImageInput({ getValues }) {
         />
       )}
     </Box>
+    // </Profiler>
   );
 }
 
