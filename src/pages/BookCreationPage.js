@@ -26,8 +26,6 @@ function bookCreationPage() {
       interactions,
     });
 
-  console.log('form');
-
   return (
     <Profiler id='book form' onRender={logProfiler}>
       <Typography variant='h4' color='primary' align='center'>

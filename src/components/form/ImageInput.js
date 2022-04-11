@@ -51,64 +51,68 @@ function ImageInput({ getValues }) {
   }, [returnValues]);
 
   return (
-    // <Profiler id='image-input' onRender={(
-    //   id,
-    //   phase,
-    //   actualDuration,
-    //   baseDuration,
-    //   startTime,
-    //   commitTime,
-    //   interactions
-    // ) =>
-    //   console.log({
-    //     id,
-    //     phase,
-    //     actualDuration,
-    //     baseDuration,
-    //     startTime,
-    //     commitTime,
-    //     interactions,
-    //   });}>
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        width: '100%',
-        mt: 2,
-      }}
+    <Profiler
+      id='image-input'
+      onRender={(
+        id,
+        phase,
+        actualDuration,
+        baseDuration,
+        startTime,
+        commitTime,
+        interactions
+      ) =>
+        console.log({
+          id,
+          phase,
+          actualDuration,
+          baseDuration,
+          startTime,
+          commitTime,
+          interactions,
+        })
+      }
     >
-      <label htmlFor='upload-photo'>
-        <input
-          style={{ display: 'none' }}
-          id='upload-photo'
-          name='upload-photo'
-          type='file'
-          onChange={changeHandler}
-        />
-        <Grow in timeout={500}>
-          <Fab
-            color='primary'
-            size='small'
-            component='span'
-            aria-label='add'
-            variant='extended'
-            sx={{ my: 2, mr: 2 }}
-          >
-            <AddIcon /> {`${!!image ? 'Change' : 'Upload'} photo`}
-          </Fab>
-        </Grow>
-      </label>
-      {!!image && (
-        <img
-          src={URL.createObjectURL(image)}
-          alt={image.name}
-          loading='lazy'
-          className={classes.image}
-        />
-      )}
-    </Box>
-    // </Profiler>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          width: '100%',
+          mt: 2,
+        }}
+      >
+        <label htmlFor='upload-photo'>
+          <input
+            style={{ display: 'none' }}
+            id='upload-photo'
+            name='upload-photo'
+            type='file'
+            onChange={changeHandler}
+          />
+          <Grow in timeout={500}>
+            <Fab
+              color='primary'
+              size='small'
+              component='span'
+              aria-label='add'
+              variant='extended'
+              sx={{ my: 2, mr: 2 }}
+            >
+              <AddIcon /> {`${!!image ? 'Change' : 'Upload'} photo`}
+            </Fab>
+          </Grow>
+        </label>
+        {!!image && (
+          <img
+            src={URL.createObjectURL(image)}
+            alt={image.name}
+            loading='lazy'
+            className={classes.image}
+          />
+        )}
+      </Box>
+    </Profiler>
   );
 }
 
