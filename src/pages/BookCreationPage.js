@@ -1,5 +1,3 @@
-import React from 'react';
-
 //CUSTOM COMPONENTS
 import Form from '../components/form/Form';
 

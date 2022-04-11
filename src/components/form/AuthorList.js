@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 
 import AuthorInput from './AuthorInput';
 
@@ -100,4 +100,4 @@ const AuthorList = ({ validateAuthor, getValues }) => {
   return <Box>{returnAuthors().map((el) => el)}</Box>;
 };
 
-export default AuthorList;
+export default memo(AuthorList);

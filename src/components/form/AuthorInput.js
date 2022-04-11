@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, memo } from 'react';
 
 //HOOKS
 import useIsValid from '../../hooks/useIsValid';
@@ -49,8 +49,6 @@ const AuthorInput = ({
     );
   }, [enteredValue, getValues, index, isValid, reset]);
 
-  console.log('render');
-
   useEffect(() => {
     returnValues();
   }, [returnValues]);
@@ -97,4 +95,4 @@ const AuthorInput = ({
   );
 };
 
-export default AuthorInput;
+export default memo(AuthorInput);

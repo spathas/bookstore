@@ -135,6 +135,27 @@ export default function Form() {
     image.reset();
   };
 
+  const logProfiler = (
+    id,
+    phase,
+    actualDuration,
+    baseDuration,
+    startTime,
+    commitTime,
+    interactions
+  ) =>
+    console.log({
+      id,
+      phase,
+      actualDuration,
+      baseDuration,
+      startTime,
+      commitTime,
+      interactions,
+    });
+
+  // console.log('test');
+
   //////////////////////////////////
   return (
     <Container component='div'>

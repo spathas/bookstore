@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 
 //MUI COMPONENTS
 import Box from '@mui/material/Box';
@@ -93,4 +93,4 @@ function ImageInput({ getValues }) {
   );
 }
 
-export default ImageInput;
+export default memo(ImageInput);

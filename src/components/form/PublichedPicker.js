@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 
 //CUSTOM COMPONENTS
 import CommonInput from './CommonInput';
@@ -6,7 +6,7 @@ import YearPicker from './YearPicker';
 
 //MUI COMPONENTS
 import Grid from '@mui/material/Grid';
-export default function PublichedPicker({ validationFn, getValues }) {
+function PublichedPicker({ validationFn, getValues }) {
   const [publisher, setPublisher] = useState({});
   const [year, setYear] = useState({});
 
@@ -43,3 +43,5 @@ export default function PublichedPicker({ validationFn, getValues }) {
     </Grid>
   );
 }
+
+export default memo(PublichedPicker);

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import ISBN from 'isbnjs';
 
 //CUSTOM COMPONENTS
@@ -98,4 +98,4 @@ function IsbnInput({ getValues }) {
   );
 }
 
-export default IsbnInput;
+export default memo(IsbnInput);

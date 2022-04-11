@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 
 //MUI COMPONENTS
 import Box from '@mui/material/Box';
@@ -68,4 +68,4 @@ const YearPicker = ({ getValues }, ref) => {
   );
 };
 
-export default YearPicker;
+export default memo(YearPicker);

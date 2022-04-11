@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, memo } from 'react';
 
 //HOOKS
 import useIsValid from '../../hooks/useIsValid';
@@ -44,6 +44,8 @@ const CommonInput = ({
     returnValues();
   }, [returnValues]);
 
+  // if (name === 'title') console.log('render3');
+
   //Render
   return (
     <Grow in={!hidden} timeout={500}>
@@ -71,4 +73,4 @@ const CommonInput = ({
   );
 };
 
-export default CommonInput;
+export default memo(CommonInput);

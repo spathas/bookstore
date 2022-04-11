@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useContext } from 'react';
+import { useState, useEffect, useCallback, useContext, memo } from 'react';
 
 //CONTEXTS
 import DataContext from '../../contexts/data-context';
@@ -102,4 +102,4 @@ const CategoriesSelector = ({ getValues }) => {
   );
 };
 
-export default CategoriesSelector;
+export default memo(CategoriesSelector);
